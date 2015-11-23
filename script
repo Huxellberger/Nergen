@@ -1,0 +1,5 @@
+git add Documentation/*.tex
+git add Documentation/*.pdf
+git add *.md
+git add script
+git add Program/*
