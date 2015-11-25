@@ -1,53 +1,39 @@
 # First draft to check out how tkinter works 
-
+# Uses a grid layout
 import Tkinter as tk
 
 
-class GUI(tk.Frame):
-  def _init_(self, master):
+class NergenWindow(tk.Frame):
+    def __init__(self, master):
+        tk.Frame.__init__(self, master)
+        self.master = master
+        self.UIGen()
 
-    # Create the frame to hold the Gooey GUI details
-    tk.Frame._init_(self, master)
+    # Create the U.I
+    def UIGen(self):
+        self.master.title("Nergen Character Generator")
+        introLabel = tk.Label(self, 
+                     text="The Duke sent me.").grid(row=0)
+        race = tk.StringVar()
+        tk.Radiobutton(self, text="Human", variable=race, 
+         value="Human").grid(row=1, column=0, sticky=tk.W) 
+        tk.Radiobutton(self, text="Elf", variable=race,
+         value="Elf").grid(row=1, column=1, sticky=tk.W) 
+        tk.Radiobutton(self, text="Dwarf", variable=race,
+         value="Dwarf").grid(row=1, column=2, sticky=tk.W) 
+        tk.Radiobutton(self, text="Half Elf", variable=race,
+         value="Half Elf").grid(row=1, column=3, sticky=tk.W) 
 
-    self.master = master
-    self.initUI()
-  
-
-  def initUI(self):
-
-    # self.style = Style()
-    # self.style.theme_use("default")
-    self.master.title = ("Nergen Character Generator")
-
-    # self.pack(fill=BOTH, expand=1)
- 
-    # Make a button to close the window
-    # self.button = tk.Button(self, text="GO AWAY", fg="red", 
-    #                         command=self.quit)
-    # self.button.place(x=40, y=40)
-
-    # self.greet = tk.Button(self, text="Push Me", command=self.greet)
-    # self.greet.place(x=50, y=50)
-
-    # Make a child widget that displays text
-    text = tk.Label(self, text="The Duke Sent Me.")
-    text.pack()
-    
-
-  def greet(self):
-    print "Greetings!!" 
+        name = tk.Entry(self)
+        nameLabel = tk.Label(self, text="Enter Name").grid(row=2, column=0)
+        name.grid(row=2, column=1)
+    # Sticky aligns grid either N,E,S or west above. Default centre
 
 
 def main():
-  # Create Root widget to the program
   root = tk.Tk()
-  gui = GUI(root)
-
-  # Display window
+  NergenWindow(root).pack()
   root.mainloop()
-
-  # Include destroy to make sure main window lost on close
-  root.destroy()
 
 main()
 
