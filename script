@@ -3,3 +3,4 @@ git add Documentation/*.pdf
 git add *.md
 git add script
 git add Program/*
+git status
